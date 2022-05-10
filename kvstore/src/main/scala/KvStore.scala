@@ -62,16 +62,14 @@ object KvStore {
       txn
     }
 
-    stm.commit(TVar.of(MutableMap.empty[K, V])) map { underlying =>
+    stm.commit(TVar.of(Map.empty[K, V])) map { underlying =>
       new KvStore[stm.Txn, K, V] {
         import stm._
 
         def setKey(key: K, value: V): Txn[Unit] = maybeThrow(failureThreshold) {
-          // Unsafe randomness because STM can't perform effects
           for {
             curr <- underlying.get
-            _ = curr += ((key, value))
-            _ <- underlying.set(curr)
+            _ <- underlying.set(curr + ((key, value)))
           } yield ()
         }
 
