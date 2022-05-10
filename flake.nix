@@ -1,5 +1,5 @@
 {
-  description = "An example repo showing tests of energy consumption with sbt-jmh and sbt-energymonitor";
+  description = "An example repo showing tests of energy consumption with sbt-energymonitor";
 
   # Nixpkgs / NixOS version to use.
   inputs.nixpkgs.url = "nixpkgs/nixos-21.11";
