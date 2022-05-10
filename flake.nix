@@ -1,5 +1,5 @@
 {
-  description = "An sbt plugin to monitor energy usage during command runs";
+  description = "An example repo showing tests of energy consumption with sbt-jmh and sbt-energymonitor";
 
   # Nixpkgs / NixOS version to use.
   inputs.nixpkgs.url = "nixpkgs/nixos-21.11";
@@ -29,9 +29,9 @@
           sbt = pkgs.sbt.override { jre = pkgs.openjdk8; };
         in
         {
-          energytest = pkgs.stdenv.mkDerivation {
-            name = "sbt-energymonitor";
-            buildInputs = [ sbt ];
+          energy-benchmark = pkgs.stdenv.mkDerivation {
+            name = "energy-benchmark";
+            buildInputs = [ sbt pkgs.jdk8 ];
             src = ./.;
           };
         });
@@ -39,7 +39,7 @@
       # The default package for 'nix build'. This makes sense if the
       # flake provides only one package or there is a clear "main"
       # package.
-      defaultPackage = forAllSystems (system: self.packages.${system}.energytest);
+      defaultPackage = forAllSystems (system: self.packages.${system}.energy-benchmark);
       devShell = forAllSystems (system:
         let pkgs = nixpkgsFor.${system};
         in
