@@ -74,4 +74,6 @@ tags
 
 .direnv
 
+# Flake lockfile
+
 flake.lock

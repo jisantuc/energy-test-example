@@ -1,5 +1,8 @@
 ThisBuild / scalaVersion := "2.13.8"
 
+// TKTKTKTKTK
+ThisBuild / energyMonitorPersistenceServerUrl := "http://192.168.1.52:8080"
+
 lazy val kvStore = (project in file("kvstore"))
   .settings(
     libraryDependencies ++= Seq(
