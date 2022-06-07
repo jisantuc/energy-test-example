@@ -1,1 +1,1 @@
-addSbtPlugin("com.47deg" % "sbt-energymonitor" % "HEAD+20220511-0940")
+addSbtPlugin("com.47deg" % "energy-monitor-plugin" % "0.2.0")
